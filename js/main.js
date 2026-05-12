@@ -95,4 +95,40 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== Año actual en footer =====
     const yearEl = document.getElementById('current-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // ===== Lightbox para galería =====
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    if (lightbox && galleryItems.length) {
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                const titleEl = item.querySelector('.gallery-caption-title');
+                if (img) {
+                    lightboxImg.src = img.src;
+                    lightboxImg.alt = img.alt;
+                    if (lightboxCaption) lightboxCaption.textContent = titleEl ? titleEl.textContent : (img.alt || '');
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        const closeLightbox = () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        lightboxClose?.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+        });
+    }
 });

@@ -1,214 +1,106 @@
 ═══════════════════════════════════════════════════════════════════
-  IMÁGENES NECESARIAS – PARROQUIA SAN ISIDRO LABRADOR
-  Carpeta destino: /images/
+  GUÍA DE IMÁGENES INTEGRADAS EN LA WEB
+  Parroquia San Isidro Labrador
 ═══════════════════════════════════════════════════════════════════
 
-INSTRUCCIONES GENERALES:
-• Formato: .jpg (fotos) y .png (logo con transparencia)
-• Resolución: mínimo 1920px de ancho para fotos hero / fondo
-• Optimizar para web (peso < 300 KB por imagen idealmente)
-• Nombre EXACTO de archivo según se indica (sensible a mayúsculas)
+Todas las imágenes están en la carpeta /images/ y se referencian con
+sus nombres exactos (con espacios y acentos — los navegadores y
+GitHub Pages los manejan correctamente).
 
 ───────────────────────────────────────────────────────────────────
-1.  logo-parroquia.png
+  ÍNDICE DE USO POR PÁGINA
 ───────────────────────────────────────────────────────────────────
-    USO: Logo en header (navegación) + footer de TODAS las páginas
-    TIPO: PNG con fondo transparente
-    TAMAÑO: 200x200 px (cuadrado)
-    CONTENIDO: Escudo oficial de la parroquia o imagen de
-               San Isidro Labrador estilizada (santo con buey/arado).
+
+▼ INDEX.HTML (Inicio)
+  • Logo parroquial.jpg            → header + footer
+  • Iglesia atardecer3.jpg         → HERO (fondo, con efecto Ken Burns)
+  • Frente parroquia día lluvioso.jpg → sección "Bienvenidos"
+  • Atardecer en san isidro.jpg    → parallax 1
+  • Caminata MIsericordia.jpg      → tarjeta Divina Misericordia
+  • Filial Divino Niño.jpg         → tarjeta Divino Niño
+  • Filial san Rafael.jpg          → tarjeta San Rafael
+  • Galería "Momentos":
+    - Procesión san Isidro3.jpg    (large)
+    - Iglesia atardecer.jpg        (tall)
+    - Hora Santa.jpg
+    - Bautizo.jpg
+    - Comunidad en misa.jpg        (wide)
+    - Visita Chinita a la parroquia.jpg
+    - Pájaro en la Iglesia.jpg
+
+▼ HISTORIA.HTML
+  • Antiguo templo parroquial.jpg  → HEADER + parallax
+  • Camino Rural.jpg               → sección "Cruce de caminos"
+  • Título San Isidro.jpg          → sección "Erección Canónica"
+
+▼ COMUNIDADES.HTML
+  • Procesión san Isidro2.jpg      → HEADER
+  • Frente parroquia.jpg           → sección Sede Parroquial
+  • Torre Iglesia con flores.jpg   → parallax
+  • Caminata MIsericordia 2.jpg    → tarjeta Divina Misericordia
+  • Filial Divino Niño.jpg         → tarjeta Divino Niño
+  • Filial san Rafael.jpg          → tarjeta San Rafael
+  • Procesión N.S. de Chiquinquirá → tarjeta N.S. del Carmen
+  • Comunidad en misa.jpg          → tarjeta San Óscar Romero
+  • Santísimo Hogar Santa Cruz.jpg → tarjeta Hogar Santa Cruz + sección detalle
+  • Galería interiores:
+    - Filial San Rafael interior.jpg
+    - Filial Divino Niño interior.jpg
+    - Caminata MIsericordia 3, 4, 5, 6.jpg
+
+▼ DIVINO-NINO.HTML
+  • Filial Divino Niño.jpg         → HEADER
+  • Filial Divino Niño interior.jpg → sección reseña
+
+▼ PARROCOS.HTML
+  • Silverio levantando el cáliz.jpg → HEADER
+  • Misa san Isidro.jpg            → parallax
+  • Párroco en la puerta.jpg       → sección Párroco Actual
+  • Galería pastoral:
+    - Párroco.jpg (tall)
+    - Misa san Isidro.jpg (wide)
+    - Silverio levantando el cáliz.jpg
+    - Párroco2.jpg
+
+▼ GALERIA.HTML (página completa)
+  Incluye TODAS las imágenes organizadas en 5 secciones:
+  1. Templo y arquitectura (atardeceres, torre, reflejos)
+  2. Procesiones y fiestas patronales
+  3. Sacramentos y celebraciones litúrgicas
+  4. Comunidades filiales (interiores y caminatas)
+  5. Raíces históricas
+  6. Pastoral (Padre Silverio)
+
+▼ CONTACTO.HTML
+  • Torre Iglesia con flores.jpg   → HEADER
+  • Ángulo parroquia.jpg           → parallax
 
 ───────────────────────────────────────────────────────────────────
-2.  hero-iglesia.jpg
+  CARACTERÍSTICAS VISUALES IMPLEMENTADAS
 ───────────────────────────────────────────────────────────────────
-    USO: Fondo del HERO principal en index.html
-    TAMAÑO: 1920 x 1080 px (16:9)
-    CONTENIDO: Foto panorámica del templo San Isidro Labrador,
-               idealmente fachada al atardecer o vista frontal
-               imponente. Imagen icónica e impactante.
+
+  ✓ Hero con animación Ken Burns (zoom lento)
+  ✓ Parallax scrolling en 5 secciones (atardecer, templo antiguo,
+    torre con flores, misa, ángulo parroquia, tormenta)
+  ✓ Galería con grid masonry (tamaños variables)
+  ✓ Lightbox (click en imagen → vista ampliada)
+  ✓ Hover con caption animado en cada imagen
+  ✓ Bandera de stats (300+ años, 25 años, 7 comunidades, 5 párrocos)
+  ✓ Animaciones fade-in al hacer scroll
+  ✓ Botón flotante de WhatsApp con pulse animation
 
 ───────────────────────────────────────────────────────────────────
-3.  templo-fachada.jpg
+  NOTAS
 ───────────────────────────────────────────────────────────────────
-    USO: Sección "Bienvenidos" en index.html
-    TAMAÑO: 1200 x 900 px (4:3)
-    CONTENIDO: Fachada del templo durante el día, en plano
-               medio. Mostrar la entrada principal.
 
-───────────────────────────────────────────────────────────────────
-4.  historia-hero.jpg
-───────────────────────────────────────────────────────────────────
-    USO: Encabezado de la página historia.html
-    TAMAÑO: 1920 x 800 px
-    CONTENIDO: Foto antigua del templo, imagen sepia, o foto del
-               interior del templo histórico. Aire histórico.
-
-───────────────────────────────────────────────────────────────────
-5.  ereccion-canonica.jpg
-───────────────────────────────────────────────────────────────────
-    USO: Sección "La Erección Canónica" en historia.html
-    TAMAÑO: 1200 x 900 px (4:3)
-    CONTENIDO: Foto de la ceremonia de erección canónica (1997)
-               o foto del decreto / Mons. Pérez Morales. Si no
-               hay disponible, foto del altar mayor o sagrario.
-
-───────────────────────────────────────────────────────────────────
-6.  comunidades-hero.jpg
-───────────────────────────────────────────────────────────────────
-    USO: Encabezado de comunidades.html
-    TAMAÑO: 1920 x 800 px
-    CONTENIDO: Foto grupal de comunidad / feligresía reunida,
-               o vista aérea del sector San Isidro.
-
-───────────────────────────────────────────────────────────────────
-7.  templo-sede.jpg
-───────────────────────────────────────────────────────────────────
-    USO: Sección Sede Parroquial en comunidades.html
-    TAMAÑO: 1200 x 900 px (4:3)
-    CONTENIDO: Foto del templo principal (otra perspectiva distinta
-               a templo-fachada.jpg). Puede ser interior con altar.
-
-───────────────────────────────────────────────────────────────────
-8.  capilla-divina-misericordia.jpg
-───────────────────────────────────────────────────────────────────
-    USO: Tarjeta de la Capilla Divina Misericordia
-         (en index.html y comunidades.html)
-    TAMAÑO: 800 x 600 px (4:3)
-    CONTENIDO: Foto de la fachada o interior de la Capilla
-               Divina Misericordia. Si no hay, imagen de la
-               imagen religiosa de la Divina Misericordia.
-
-───────────────────────────────────────────────────────────────────
-9.  capilla-divino-nino.jpg
-───────────────────────────────────────────────────────────────────
-    USO: Tarjeta Capilla Divino Niño Jesús
-         (en index.html y comunidades.html)
-    TAMAÑO: 800 x 600 px (4:3)
-    CONTENIDO: Foto de la fachada del Templo Divino Niño Jesús.
-
-───────────────────────────────────────────────────────────────────
-10. capilla-san-rafael.jpg
-───────────────────────────────────────────────────────────────────
-    USO: Tarjeta Capilla San Rafael Arcángel
-    TAMAÑO: 800 x 600 px (4:3)
-    CONTENIDO: Foto de la capilla o imagen de San Rafael Arcángel.
-
-───────────────────────────────────────────────────────────────────
-11. capilla-nsdel-carmen.jpg
-───────────────────────────────────────────────────────────────────
-    USO: Tarjeta Capilla N.S. del Carmen (Sector Mata Clara)
-    TAMAÑO: 800 x 600 px (4:3)
-    CONTENIDO: Fachada de la capilla o imagen de la Virgen del
-               Carmen del sector Mata Clara.
-
-───────────────────────────────────────────────────────────────────
-12. capilla-romero.jpg
-───────────────────────────────────────────────────────────────────
-    USO: Tarjeta Capilla San Óscar Arnulfo Romero
-    TAMAÑO: 800 x 600 px (4:3)
-    CONTENIDO: Fachada de la capilla o imagen de San Óscar Romero.
-
-───────────────────────────────────────────────────────────────────
-13. hogar-santa-cruz.jpg
-───────────────────────────────────────────────────────────────────
-    USO: Tarjeta Hogar Santa Cruz
-    TAMAÑO: 800 x 600 px (4:3)
-    CONTENIDO: Foto del Hogar Santa Cruz junto a las Hermanitas
-               de los Ancianos Desamparados. Puede ser foto de
-               la capilla o de la fachada del hogar.
-
-───────────────────────────────────────────────────────────────────
-14. divino-nino-hero.jpg
-───────────────────────────────────────────────────────────────────
-    USO: Encabezado de divino-nino.html
-    TAMAÑO: 1920 x 800 px
-    CONTENIDO: Foto principal del Templo Divino Niño Jesús
-               (vista amplia/panorámica) o imagen de la advocación.
-
-───────────────────────────────────────────────────────────────────
-15. parrocos-hero.jpg
-───────────────────────────────────────────────────────────────────
-    USO: Encabezado de parrocos.html
-    TAMAÑO: 1920 x 800 px
-    CONTENIDO: Foto de párrocos juntos, ornamentos sacerdotales,
-               o el altar mayor en celebración eucarística.
-
-───────────────────────────────────────────────────────────────────
-16. parroco-actual.jpg
-───────────────────────────────────────────────────────────────────
-    USO: Sección "Párroco Actual" en parrocos.html
-    TAMAÑO: 1200 x 900 px (4:3)
-    CONTENIDO: Retrato del Pbro. Silverio Antonio Osorio Mora
-               (preferiblemente con vestiduras litúrgicas o en
-               el templo).
-
-───────────────────────────────────────────────────────────────────
-17. contacto-hero.jpg
-───────────────────────────────────────────────────────────────────
-    USO: Encabezado de contacto.html
-    TAMAÑO: 1920 x 800 px
-    CONTENIDO: Foto del despacho parroquial, manos juntas en
-               oración, o exterior del templo con feligresía.
+• Todas las fotos están firmadas @padresilverio78 (se reconoce
+  esta autoría en el footer y en la página de galería).
+• El logo es "Logo parroquial.jpg" — si se desea fondo transparente
+  reemplazar por "Logo parroquial.png" sin cambiar HTML (sólo
+  ajustar extensión en cada referencia).
+• Algunas filiales (N.S. del Carmen Mata Clara, San Óscar Romero)
+  reutilizan imágenes genéricas porque no había fotos específicas.
+  Si se agregan fotos propias en el futuro, reemplazar las refs en
+  comunidades.html.
 
 ═══════════════════════════════════════════════════════════════════
-  TOTAL: 17 IMÁGENES
-═══════════════════════════════════════════════════════════════════
-
-OPCIONAL (no usadas en código actual, pero recomendadas para
-ampliar la web en el futuro):
-
-• favicon.ico        – Ícono pestaña del navegador (32x32 px)
-• galeria/*.jpg      – Carpeta con fotos de eventos y feligresía
-• og-image.jpg       – Imagen 1200x630 para compartir en redes
-                       sociales (WhatsApp, Facebook, Twitter)
-
-═══════════════════════════════════════════════════════════════════
-  RECOMENDACIONES TÉCNICAS
-═══════════════════════════════════════════════════════════════════
-
-• Comprime las imágenes en https://tinypng.com antes de subirlas
-  (reduce peso hasta 70% sin pérdida visible)
-
-• Para fotos hero (1920px) considera servir versión WebP además
-  del JPG: navegadores modernos cargarán automáticamente la WebP
-  (más liviana).
-
-• Verifica que todas las imágenes tengan derechos de uso
-  (fotos propias de la parroquia, donadas por feligreses, o
-  bajo licencia Creative Commons).
-
-═══════════════════════════════════════════════════════════════════
-  ESTRUCTURA FINAL DE CARPETAS
-═══════════════════════════════════════════════════════════════════
-
-Web San Isidro/
-├── index.html
-├── historia.html
-├── comunidades.html
-├── divino-nino.html
-├── parrocos.html
-├── contacto.html
-├── imagenes_necesarias.txt          ← este archivo
-├── Pagina web.docx                  (documento original)
-├── css/
-│   └── styles.css
-├── js/
-│   └── main.js
-└── images/                          ← colocar aquí las 17 imágenes
-    ├── logo-parroquia.png
-    ├── hero-iglesia.jpg
-    ├── templo-fachada.jpg
-    ├── historia-hero.jpg
-    ├── ereccion-canonica.jpg
-    ├── comunidades-hero.jpg
-    ├── templo-sede.jpg
-    ├── capilla-divina-misericordia.jpg
-    ├── capilla-divino-nino.jpg
-    ├── capilla-san-rafael.jpg
-    ├── capilla-nsdel-carmen.jpg
-    ├── capilla-romero.jpg
-    ├── hogar-santa-cruz.jpg
-    ├── divino-nino-hero.jpg
-    ├── parrocos-hero.jpg
-    ├── parroco-actual.jpg
-    └── contacto-hero.jpg
