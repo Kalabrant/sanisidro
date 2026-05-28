@@ -21,7 +21,6 @@
 
     --font-serif: 'Cormorant Garamond', 'Times New Roman', serif;
     --font-sans: 'Montserrat', 'Helvetica Neue', sans-serif;
-    --font-script: 'Great Vibes', cursive;
 
     --shadow-sm: 0 2px 8px var(--color-shadow);
     --shadow-md: 0 6px 20px rgba(26, 58, 92, 0.18);
@@ -294,6 +293,18 @@ img {
     animation: kenBurns 20s ease-in-out infinite alternate;
 }
 
+/* Video de fondo del hero */
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    pointer-events: none;
+}
+
 @keyframes kenBurns {
     from { transform: scale(1); }
     to { transform: scale(1.1); }
@@ -315,9 +326,12 @@ img {
 
 .hero-pretitle {
     display: inline-block;
-    font-family: var(--font-script);
+    font-family: var(--font-sans);
     color: var(--color-gold);
-    font-size: 2rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
     margin-bottom: 16px;
     animation: fadeInDown 1s ease;
 }
@@ -505,9 +519,12 @@ img {
 
 .section-pretitle {
     display: inline-block;
-    font-family: var(--font-script);
+    font-family: var(--font-sans);
     color: var(--color-gold-dark);
-    font-size: 1.8rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
     margin-bottom: 8px;
 }
 
@@ -679,7 +696,6 @@ img {
 
 .two-cols-text .lead {
     font-size: 1.15rem;
-    font-style: italic;
     color: var(--color-gold-dark);
     margin-bottom: 20px;
     font-family: var(--font-serif);
@@ -948,7 +964,6 @@ img {
     margin-top: 12px;
     font-size: 0.85rem;
     color: var(--color-text-light);
-    font-style: italic;
 }
 
 .priest-current {
@@ -1001,7 +1016,6 @@ img {
     font-size: clamp(1.5rem, 3vw, 2.2rem);
     line-height: 1.4;
     margin-bottom: 24px;
-    font-style: italic;
     color: var(--color-white);
 }
 
@@ -1053,9 +1067,12 @@ img {
 }
 
 .page-header-pretitle {
-    font-family: var(--font-script);
+    font-family: var(--font-sans);
     color: var(--color-gold);
-    font-size: 2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
     margin-bottom: 4px;
 }
 
@@ -1337,7 +1354,7 @@ img {
 /* ============================================
    ANIMACIONES SCROLL
    ============================================ */
-.fade-in {
+.js .fade-in {
     opacity: 0;
     transform: translateY(40px);
     transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -1348,7 +1365,7 @@ img {
     transform: translateY(0);
 }
 
-.fade-in-left {
+.js .fade-in-left {
     opacity: 0;
     transform: translateX(-40px);
     transition: all 0.8s ease;
@@ -1359,7 +1376,7 @@ img {
     transform: translateX(0);
 }
 
-.fade-in-right {
+.js .fade-in-right {
     opacity: 0;
     transform: translateX(40px);
     transition: all 0.8s ease;
@@ -1601,7 +1618,6 @@ img {
 .parallax-content p {
     color: var(--color-cream);
     font-size: 1.15rem;
-    font-style: italic;
     font-family: var(--font-serif);
     line-height: 1.6;
 }
@@ -1781,7 +1797,6 @@ img {
     transform: translateX(-50%);
     color: var(--color-cream);
     font-family: var(--font-serif);
-    font-style: italic;
     font-size: 1.1rem;
     text-align: center;
 }
@@ -1881,4 +1896,197 @@ img {
     opacity: 0.6;
     z-index: 3;
     font-family: var(--font-sans);
+}
+
+/* ============================================
+   AJUSTES PARA IMÁGENES PORTRAIT
+   ============================================ */
+
+/* Two-cols: variante para imágenes portrait */
+.two-cols-img--portrait {
+    aspect-ratio: 3/4;
+}
+
+/* Community cards: mostrar parte superior de imágenes (edificios, personas) */
+.community-card-img img {
+    object-position: center 30%;
+}
+
+/* Utilidad: posicionar imagen desde arriba */
+.img-top { object-position: center top !important; }
+.img-center { object-position: center center !important; }
+
+/* ============================================
+   VIDA SACRAMENTAL
+   ============================================ */
+.sacramento-card {
+    background: var(--color-white);
+    border-radius: 8px;
+    padding: 36px 32px;
+    box-shadow: var(--shadow-sm);
+    border-left: 5px solid var(--color-gold);
+    transition: all var(--transition);
+    margin-bottom: 28px;
+}
+
+.sacramento-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.sacramento-card h3 {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sacramento-card h3 i {
+    color: var(--color-gold);
+    font-size: 1.3rem;
+}
+
+.sacramento-card .sacramento-info {
+    color: var(--color-gold-dark);
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.sacramento-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sacramento-card ul li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    color: var(--color-text-light);
+    border-bottom: 1px solid var(--color-beige);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.sacramento-card ul li:last-child {
+    border-bottom: none;
+}
+
+.sacramento-card ul li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--color-gold);
+    font-size: 0.75rem;
+    top: 10px;
+}
+
+.sacramento-card .sacramento-nota {
+    margin-top: 14px;
+    padding: 12px 16px;
+    background: var(--color-beige);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    font-style: italic;
+}
+
+/* Tabla de aranceles */
+.aranceles-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: var(--color-white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.aranceles-table thead {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.aranceles-table th {
+    padding: 14px 20px;
+    text-align: left;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.aranceles-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--color-beige);
+    font-size: 0.95rem;
+    color: var(--color-text);
+}
+
+.aranceles-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.aranceles-table tbody tr:hover {
+    background: var(--color-cream);
+}
+
+.aranceles-table .precio {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 1.1rem;
+}
+
+/* Caja de datos bancarios */
+.datos-bancarios {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    color: var(--color-white);
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    margin: 28px 0;
+}
+
+.datos-bancarios h3 {
+    color: var(--color-white);
+    margin-bottom: 16px;
+    font-size: 1.3rem;
+}
+
+.datos-bancarios .dato-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.datos-bancarios .dato-item:last-child {
+    border-bottom: none;
+}
+
+.datos-bancarios .dato-label {
+    color: var(--color-gold-light);
+    font-weight: 600;
+    min-width: 100px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.datos-bancarios .dato-valor {
+    color: var(--color-white);
+    font-size: 1.05rem;
+}
+
+/* ============================================
+   NAV AJUSTADO PARA MÁS ITEMS
+   ============================================ */
+@media (min-width: 769px) {
+    .nav-links a {
+        padding: 8px 11px;
+        font-size: 0.85rem;
+    }
 }

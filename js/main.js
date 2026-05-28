@@ -3,6 +3,8 @@
    JavaScript principal
    ============================================ */
 
+document.documentElement.classList.add('js');
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // ===== Navegación móvil =====
