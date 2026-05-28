@@ -1990,7 +1990,16 @@ img {
     border-radius: 6px;
     font-size: 0.9rem;
     color: var(--color-text);
-    font-style: italic;
+}
+
+/* Anular cualquier itálica o cursiva en todo el sitio */
+em, i:not([class*="fa-"]):not([class*="fab"]):not([class*="fas"]):not([class*="far"]),
+blockquote, q, cite, address, dfn, var {
+    font-style: normal !important;
+}
+
+* {
+    font-style: normal;
 }
 
 /* Tabla de aranceles */
