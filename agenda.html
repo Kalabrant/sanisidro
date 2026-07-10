@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Parroquial | Parroquia San Isidro Labrador</title>
+    <meta name="description" content="Agenda pastoral de la Parroquia San Isidro Labrador: fiestas patronales, novenas, solemnidades y actividades de julio 2026 a enero 2027. Rumbo al XXX Aniversario.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* ===== Estilos propios de la Agenda ===== */
+        .aniv-strip {
+            background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+            color: var(--color-white);
+            text-align: center;
+            padding: 18px 24px;
+        }
+        .aniv-strip strong { color: var(--color-gold-light); font-weight: 600; }
+        .aniv-strip .aniv-dias {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--color-gold-light);
+        }
+
+        /* Avisos destacados */
+        .avisos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 24px;
+        }
+        .aviso-card {
+            background: var(--color-white);
+            border-left: 5px solid var(--color-gold);
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+            padding: 26px 26px 22px;
+            position: relative;
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+        .aviso-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .aviso-card.aviso-hoy { border-left-color: #b0413e; }
+        .aviso-badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--color-white);
+            background: var(--color-gold-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+        .aviso-hoy .aviso-badge { background: #b0413e; }
+        .aviso-card h3 { font-size: 1.45rem; margin-bottom: 8px; }
+        .aviso-fecha {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-gold-dark);
+            margin-bottom: 8px;
+        }
+        .aviso-fecha i { margin-right: 6px; }
+        .aviso-card p { font-size: 0.92rem; color: var(--color-text-light); }
+        .avisos-vacio {
+            text-align: center;
+            color: var(--color-text-light);
+            font-style: italic;
+        }
+
+        /* Agenda por meses */
+        .mes-bloque { margin-bottom: 60px; }
+        .mes-titulo {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            border-bottom: 2px solid var(--color-gold);
+            padding-bottom: 10px;
+            margin-bottom: 8px;
+        }
+        .mes-titulo h2 { font-size: 2.2rem; }
+        .mes-titulo span {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--color-gold-dark);
+            font-weight: 600;
+        }
+        .mes-desc {
+            font-size: 0.92rem;
+            color: var(--color-text-light);
+            margin-bottom: 28px;
+            max-width: 850px;
+        }
+        .evento-lista { display: flex; flex-direction: column; gap: 18px; }
+        .evento {
+            display: flex;
+            gap: 22px;
+            background: var(--color-white);
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            padding: 20px 24px;
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+        .evento:hover { transform: translateX(6px); box-shadow: var(--shadow-md); }
+        .evento-fecha {
+            flex: 0 0 78px;
+            text-align: center;
+            align-self: flex-start;
+            background: var(--color-cream);
+            border: 1px solid var(--color-beige);
+            border-radius: 8px;
+            padding: 10px 6px;
+        }
+        .evento-fecha .dia {
+            font-family: var(--font-serif);
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1;
+            display: block;
+        }
+        .evento-fecha .mes {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--color-gold-dark);
+            font-weight: 700;
+        }
+        .evento-body h3 { font-size: 1.3rem; margin-bottom: 4px; }
+        .evento-body p { font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 6px; }
+        .evento-meta { font-size: 0.8rem; color: var(--color-primary-light); font-weight: 600; }
+        .evento-meta i { margin-right: 5px; color: var(--color-gold-dark); }
+        .evento-tag {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+            color: var(--color-white);
+            background: var(--color-primary-light);
+        }
+        .tag-solemnidad { background: var(--color-gold-dark); }
+        .tag-fiesta     { background: var(--color-primary); }
+        .tag-novena     { background: #4a7c59; }
+        .tag-adviento   { background: #6b4a8a; }
+        .tag-navidad    { background: #a83f3f; }
+        .tag-aniversario{ background: linear-gradient(135deg, var(--color-gold-dark), var(--color-gold)); }
+        .tag-retiro     { background: #4a7c8a; }
+        .tag-memoria    { background: #8a8a7a; }
+        .evento-encurso {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #4a7c59;
+            margin-left: 8px;
+        }
+        .evento-destacado { border: 1px solid var(--color-gold); }
+        .agenda-vacia {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--color-text-light);
+            font-style: italic;
+        }
+        @media (max-width: 600px) {
+            .evento { flex-direction: column; gap: 12px; }
+            .evento-fecha { flex: none; width: 78px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topbar">
+        <div class="container topbar-content">
+            <div class="topbar-info">
+                <span><i class="fas fa-map-marker-alt"></i> San Isidro, Maracaibo - Zulia</span>
+                <span><i class="fas fa-phone"></i> +58 412 514 2747</span>
+            </div>
+            <div class="topbar-social">
+                <a href="https://www.facebook.com/share/14fTYBfaTTc/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/parroquiasanisidro_" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/584125142747" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:contacto@sanisidrolabrador.org"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="nav-logo">
+                <img src="images/Logo parroquial.jpg" alt="Escudo" class="nav-logo-img">
+                <div class="nav-logo-text">
+                    <span class="nav-logo-title">San Isidro Labrador</span>
+                    <span class="nav-logo-subtitle">Parroquia · Maracaibo</span>
+                </div>
+            </a>
+            <button class="nav-toggle" aria-label="Menú"><span></span><span></span><span></span></button>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="historia.html">Nuestra Identidad</a></li>
+                <li><a href="agenda.html" class="active">Agenda</a></li>
+                <li><a href="index.html#horarios">Horarios</a></li>
+                <li><a href="vida-sacramental.html">Vida Sacramental</a></li>
+                <li><a href="lectio-divina.html">Lectio Divina</a></li>
+                <li><a href="comunidades.html">Comunidades</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <div class="page-header-bg" style="background-image: url('images/Misa san Isidro.jpg');"></div>
+        <div class="page-header-overlay"></div>
+        <div class="container page-header-content">
+            <span class="page-header-pretitle">Vida pastoral</span>
+            <h1>Agenda Parroquial</h1>
+            <p class="page-header-breadcrumb"><a href="index.html">Inicio</a> <span>›</span> Agenda</p>
+        </div>
+    </section>
+
+    <div class="aniv-strip" id="aniv-strip">
+        <i class="fas fa-church"></i> Rumbo al <strong>XXX Aniversario de Erección Parroquial</strong> — 18 de enero de 2027 · <span class="aniv-dias" id="aniv-dias"></span>
+    </div>
+
+    <section class="section section-beige" id="avisos">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-pretitle">No te lo pierdas</span>
+                <h2 class="section-title">Avisos Parroquiales</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Celebraciones en curso y próximas en nuestra comunidad.</p>
+            </div>
+            <div class="avisos-grid" id="avisos-grid"></div>
+        </div>
+    </section>
+
+    <section class="section section-light" id="agenda">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-pretitle">Julio 2026 – Enero 2027</span>
+                <h2 class="section-title">Agenda Pastoral</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Camino litúrgico y pastoral hacia el XXX Aniversario de la Erección Canónica de nuestra parroquia.</p>
+            </div>
+            <div id="agenda-contenido"></div>
+        </div>
+    </section>
+
+    <section class="feature-bar">
+        <div class="container">
+            <h3>¿Deseas participar u organizar alguna actividad?</h3>
+            <p>Comunícate con la Secretaría de Despacho: <strong>Idalis Berrueta · +58 412 514 2747</strong></p>
+            <div style="margin-top:24px">
+                <a href="https://wa.me/584125142747" class="btn btn-dark" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="contacto.html" class="btn btn-dark"><i class="fas fa-envelope"></i> Contacto</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="images/Logo parroquial.jpg" alt="Logo" class="footer-logo-img">
+                        <div><h3>San Isidro Labrador</h3><span>PARROQUIA · MARACAIBO</span></div>
+                    </div>
+                    <p>Sembrador de esperanza y fe en nuestra comunidad.</p>
+                    <div class="footer-social">
+                        <a href="https://instagram.com/parroquiasanisidro_" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/584125142747" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/share/14fTYBfaTTc/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://padresilverio.blogspot.com/" target="_blank"><i class="fab fa-blogger-b"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="historia.html">Nuestra Identidad</a></li>
+                        <li><a href="agenda.html">Agenda</a></li>
+                        <li><a href="vida-sacramental.html">Vida Sacramental</a></li>
+                        <li><a href="comunidades.html">Comunidades</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Horarios</h4>
+                    <ul>
+                        <li>Jueves · 5:30 PM</li>
+                        <li>Hora Santa · 6:00 PM</li>
+                        <li>Domingo · 10:30 AM</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li>San Isidro, Maracaibo</li>
+                        <li>+58 412 514 2747</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Parroquia San Isidro Labrador · Fotografías @padresilverio78</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/584125142747" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <button class="scroll-top" aria-label="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+
+    <script>
+    (function () {
+        'use strict';
+
+        /* ================= DATOS ================= */
+        // Fuente: AGENDA julio - enero.docx (Agenda Pastoral con Calendario Litúrgico)
+        // tag: solemnidad · fiesta · novena · adviento · navidad · aniversario · retiro · memoria
+        const EVENTOS = [
+            { i: '2026-07-07', f: '2026-07-15', t: 'Novena a Nuestra Señora del Carmen', d: 'Una filial distinta cada noche, en preparación a la fiesta de la Copatrona Parroquial.', l: 'Todas las filiales', tag: 'novena' },
+            { i: '2026-07-16', t: 'Fiesta de Nuestra Señora del Carmen', d: 'Fiesta patronal de la Copatrona Parroquial y patrona de la filial Mata Clara. Misas: Hogar Santa Cruz 7:30 am · San Óscar A. Romero 4:00 pm · Sede Parroquial 5:00 pm · Divino Niño Jesús 5:15 pm · Divina Misericordia 6:30 pm · N.S. del Carmen (Mata Clara) 7:00 pm.', l: 'Todas las filiales', tag: 'fiesta', destacado: true },
+            { i: '2026-07-26', t: 'Santos Joaquín y Ana', d: 'Misa con intención por los abuelos de la parroquia.', l: 'Sede Parroquial', tag: 'memoria' },
+            { i: '2026-08-15', t: 'Asunción de la Santísima Virgen María', d: 'Solemnidad y fiesta de guardar en Venezuela. Misa solemne 10:00 am.', l: 'Sede Parroquial', tag: 'solemnidad', destacado: true },
+            { i: '2026-08-22', t: 'Santa María Reina', d: 'Rosario comunitario vespertino en la memoria de la Realeza de la Santísima Virgen María.', l: 'Sede Parroquial', tag: 'memoria' },
+            { i: '2026-08-29', t: 'Martirio de San Juan Bautista', d: 'Misa matutina.', l: 'Sede Parroquial', tag: 'memoria' },
+            { i: '2026-09-08', t: 'Natividad de la Santísima Virgen María', d: 'Misa vespertina y rosario comunitario.', l: 'Sede Parroquial', tag: 'fiesta' },
+            { i: '2026-09-20', f: '2026-09-28', t: 'Novena a San Rafael Arcángel', d: 'Un sector diferente cada día, en preparación a la fiesta patronal de la filial.', l: 'Filial San Rafael Arcángel', tag: 'novena' },
+            { i: '2026-09-29', t: 'Fiesta patronal — Santos Arcángeles Miguel, Gabriel y Rafael', d: 'Fiesta patronal de la Filial San Rafael Arcángel. Misa solemne 6:00 pm, procesión y acto festivo comunitario.', l: 'Filial San Rafael Arcángel', tag: 'fiesta', destacado: true },
+            { i: '2026-10-01', f: '2026-10-31', t: 'Mes del Santo Rosario', d: 'Rezo comunitario del Santo Rosario durante todo el mes de octubre.', l: 'Todas las filiales', tag: 'novena' },
+            { i: '2026-10-02', t: 'Santos Ángeles Custodios', d: 'Misa con intención por los niños.', l: 'Divina Misericordia', tag: 'memoria' },
+            { i: '2026-10-04', t: 'San Francisco de Asís', d: 'Misa solemne.', l: 'Sede Parroquial', tag: 'memoria' },
+            { i: '2026-10-18', t: 'San Lucas Evangelista', d: 'Misa con intención por los médicos y agentes de salud de la comunidad.', l: 'Sede Parroquial', tag: 'fiesta' },
+            { i: '2026-11-01', t: 'Todos los Santos', d: 'Misa solemne mañana y tarde; catequesis sobre la comunión de los santos.', l: 'Todas las filiales', tag: 'solemnidad', destacado: true },
+            { i: '2026-11-02', t: 'Conmemoración de los Fieles Difuntos', d: 'Misas en sufragio de los difuntos; misa parroquial 6:00 pm.', l: 'Sede Parroquial', tag: 'memoria' },
+            { i: '2026-11-08', t: 'XXXII Domingo del Tiempo Ordinario', d: 'Catequesis sobre la vida eterna.', l: 'Todas las filiales', tag: 'memoria' },
+            { i: '2026-11-15', t: 'XXXIII Domingo del Tiempo Ordinario', d: 'Perseverancia en la tribulación.', l: 'Todas las filiales', tag: 'memoria' },
+            { i: '2026-11-22', t: 'Jesucristo, Rey del Universo', d: 'Último domingo del Año Litúrgico A. Misa solemne, consagración de la parroquia a Cristo Rey y cierre solemne del Ciclo A.', l: 'Sede Parroquial', tag: 'solemnidad', destacado: true },
+            { i: '2026-11-28', t: 'Retiro Parroquial de Adviento', d: '«Florece la esperanza, abre el corazón a Cristo». Hogar Santa Cruz, 8:30 am. Animan las Fraternidades de Emaús y Samuel.', l: 'Hogar Santa Cruz', tag: 'retiro' },
+            { i: '2026-11-29', t: 'I Domingo de Adviento', d: 'Inicio del Año Litúrgico 2026-2027 (Ciclo B). Primera vela; intención: los niños.', l: 'Todas las filiales', tag: 'adviento' },
+            { i: '2026-12-06', t: 'II Domingo de Adviento', d: 'Segunda vela; intención: la familia.', l: 'Todas las filiales', tag: 'adviento' },
+            { i: '2026-12-08', t: 'Inmaculada Concepción de María', d: 'Solemnidad y fiesta de guardar. Misa solemne 5:00 am y procesión mariana con velitas.', l: 'Todas las filiales', tag: 'solemnidad', destacado: true },
+            { i: '2026-12-13', t: 'III Domingo de Adviento (Gaudete) · Aniversario sacerdotal del Padre Silverio', d: 'Tercera vela; intención: los novios y parejas. Aniversario sacerdotal del Pbro. Silverio Osorio (ordenado el 13/12/2014): misa 9:00 am en acción de gracias y compartir fraterno.', l: 'Sede Parroquial · 9:00 am', tag: 'aniversario', destacado: true },
+            { i: '2026-12-16', f: '2026-12-24', t: 'Misas de Aguinaldo', d: 'Divina Misericordia y Sede 5:00 am · Divino Niño Jesús y San Rafael 6:00 am · Hogar Santa Cruz 7:30 am · Mata Clara y San Óscar A. Romero horario por confirmar.', l: 'Todas las filiales', tag: 'navidad' },
+            { i: '2026-12-20', t: 'IV Domingo de Adviento · Parrandón Navideño', d: 'Cuarta vela; intención: sacerdotes y obispos. Misa Única Parroquial 9:00 am en la Sede, con coro y músicos.', l: 'Sede Parroquial · 9:00 am', tag: 'navidad', destacado: true },
+            { i: '2026-12-24', t: 'Nochebuena — Misas de Navidad', d: 'Misas de la Natividad del Señor: 5:00 am Divina Misericordia · 10:00 am Sede Parroquial.', l: 'Divina Misericordia · Sede', tag: 'solemnidad', destacado: true },
+            { i: '2026-12-25', t: 'La Natividad del Señor', d: 'Misa solemne matutina 10:00 am en el Hogar Santa Cruz; felicitación del párroco a la comunidad.', l: 'Hogar Santa Cruz', tag: 'solemnidad', destacado: true },
+            { i: '2026-12-27', t: 'La Sagrada Familia', d: 'Horario normal de misas y bendición especial de las familias.', l: 'Todas las filiales', tag: 'fiesta' },
+            { i: '2026-12-31', t: 'Misas de Fin de Año', d: 'Santa María, Madre de Dios (vigilia). 5:00 am Divina Misericordia · 10:00 am Sede Parroquial.', l: 'Divina Misericordia · Sede', tag: 'navidad' },
+            { i: '2027-01-01', t: 'Santa María, Madre de Dios', d: 'Jornada Mundial de la Paz. Misa solemne; fiesta de guardar.', l: 'Todas las filiales', tag: 'solemnidad' },
+            { i: '2027-01-03', t: 'Epifanía del Señor', d: 'Solemnidad trasladada al domingo. Bendición y entrega de la sal y el incienso; proclamación de las fiestas movibles del año.', l: 'Todas las filiales', tag: 'solemnidad' },
+            { i: '2027-01-06', t: 'Fiesta patronal — Divino Niño Jesús', d: 'Fiestas patronales de la Capilla Divino Niño Jesús: misa solemne patronal, procesión con la imagen y acto festivo comunitario.', l: 'Capilla Divino Niño Jesús', tag: 'fiesta', destacado: true },
+            { i: '2027-01-10', t: 'El Bautismo del Señor', d: 'Cierre del Tiempo de Navidad e inicio del Tiempo Ordinario. Renovación de las promesas bautismales.', l: 'Todas las filiales', tag: 'fiesta' },
+            { i: '2027-01-18', t: 'XXX Aniversario de Erección Canónica de la Parroquia', d: 'Misa solemne de acción de gracias por los 30 años de la Erección Canónica de la Parroquia San Isidro Labrador. Celebración central y cierre del itinerario jubilar de esta agenda.', l: 'Sede Parroquial', tag: 'aniversario', destacado: true }
+        ];
+
+        const MESES_META = {
+            '2026-07': { n: 'Julio 2026', d: 'Tiempo Ordinario — color verde. Gran fiesta parroquial: Nuestra Señora del Carmen (16 jul), Copatrona Parroquial.' },
+            '2026-08': { n: 'Agosto 2026', d: 'Tiempo Ordinario — color verde. Cumbre del mes: la Asunción de la Virgen (15 ago), fiesta de guardar en Venezuela.' },
+            '2026-09': { n: 'Septiembre 2026', d: 'Tiempo Ordinario — color verde. Gran evento: la Fiesta de los Arcángeles (29 sep), fecha patronal de la Filial San Rafael Arcángel.' },
+            '2026-10': { n: 'Octubre 2026', d: 'Tiempo Ordinario. Mes del Rosario: fiesta de Nuestra Señora del Rosario (7 oct).' },
+            '2026-11': { n: 'Noviembre 2026', d: 'Del Tiempo Ordinario al Adviento: Todos los Santos, Fieles Difuntos, Cristo Rey (22 nov) y el inicio del Ciclo B (29 nov).' },
+            '2026-12': { n: 'Diciembre 2026', d: 'Adviento (morado) → Navidad (blanco). El mes más intenso: Inmaculada, aniversario sacerdotal del Padre Silverio, Misas de Aguinaldo y la Navidad del Señor.' },
+            '2027-01': { n: 'Enero 2027', d: 'Navidad → Tiempo Ordinario, Ciclo B. Cierra el itinerario con el XXX Aniversario de Erección Parroquial (18 de enero).' }
+        };
+
+        const TAG_NOMBRES = {
+            solemnidad: 'Solemnidad', fiesta: 'Fiesta', novena: 'Novena / Devoción',
+            adviento: 'Adviento', navidad: 'Navidad', aniversario: 'Aniversario',
+            retiro: 'Retiro', memoria: 'Memoria'
+        };
+        const MES_ABR = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
+        const MES_LARGO = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+        const DIAS_AVISO = 15; // días de antelación para mostrar un aviso
+
+        /* ================= UTILIDADES ================= */
+        function pd(s) { const [a, m, d] = s.split('-').map(Number); return new Date(a, m - 1, d); }
+        const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+        const DIA_MS = 86400000;
+        const dif = (fecha) => Math.round((fecha - hoy) / DIA_MS);
+
+        function fechaLarga(d) { return d.getDate() + ' de ' + MES_LARGO[d.getMonth()]; }
+        function rangoTexto(ev) {
+            const a = pd(ev.i);
+            if (!ev.f) return fechaLarga(a) + ' de ' + a.getFullYear();
+            const b = pd(ev.f);
+            return 'Del ' + a.getDate() + (a.getMonth() === b.getMonth() ? '' : ' de ' + MES_LARGO[a.getMonth()]) + ' al ' + fechaLarga(b) + ' de ' + b.getFullYear();
+        }
+
+        /* ================= AVISOS ================= */
+        const grid = document.getElementById('avisos-grid');
+        const avisos = EVENTOS.filter(ev => {
+            const ini = pd(ev.i), fin = pd(ev.f || ev.i);
+            return fin >= hoy && ini <= new Date(hoy.getTime() + DIAS_AVISO * DIA_MS);
+        }).sort((a, b) => pd(a.i) - pd(b.i)).slice(0, 6);
+
+        if (avisos.length === 0) {
+            grid.innerHTML = '<p class="avisos-vacio">Por ahora no hay avisos próximos. Consulta la agenda completa más abajo.</p>';
+        } else {
+            grid.innerHTML = avisos.map(ev => {
+                const ini = pd(ev.i), fin = pd(ev.f || ev.i);
+                let badge, esHoy = false;
+                if (ini <= hoy && fin >= hoy) {
+                    esHoy = true;
+                    badge = ev.f ? 'En curso · hasta el ' + fechaLarga(fin) : '¡Hoy!';
+                } else {
+                    const n = dif(ini);
+                    badge = n === 1 ? 'Mañana' : 'En ' + n + ' días';
+                }
+                return '<div class="aviso-card fade-in' + (esHoy ? ' aviso-hoy' : '') + '">' +
+                    '<span class="aviso-badge">' + badge + '</span>' +
+                    '<h3>' + ev.t + '</h3>' +
+                    '<p class="aviso-fecha"><i class="far fa-calendar-alt"></i>' + rangoTexto(ev) + ' · <i class="fas fa-map-marker-alt"></i>' + ev.l + '</p>' +
+                    '<p>' + ev.d + '</p></div>';
+            }).join('');
+        }
+
+        /* ================= AGENDA (solo eventos no pasados) ================= */
+        const cont = document.getElementById('agenda-contenido');
+        const vigentes = EVENTOS.filter(ev => pd(ev.f || ev.i) >= hoy);
+
+        if (vigentes.length === 0) {
+            cont.innerHTML = '<div class="agenda-vacia"><p>Esta agenda (julio 2026 – enero 2027) ha concluido.<br>Pronto publicaremos el nuevo calendario pastoral. ¡Gracias por caminar con nosotros!</p></div>';
+        } else {
+            const porMes = {};
+            vigentes.forEach(ev => {
+                const k = ev.i.slice(0, 7);
+                (porMes[k] = porMes[k] || []).push(ev);
+            });
+            cont.innerHTML = Object.keys(porMes).sort().map(k => {
+                const meta = MESES_META[k] || { n: k, d: '' };
+                const items = porMes[k].map(ev => {
+                    const ini = pd(ev.i), fin = pd(ev.f || ev.i);
+                    const enCurso = ini <= hoy && fin >= hoy;
+                    return '<article class="evento fade-in' + (ev.destacado ? ' evento-destacado' : '') + '">' +
+                        '<div class="evento-fecha"><span class="dia">' + ini.getDate() + (ev.f ? '–' + fin.getDate() : '') + '</span>' +
+                        '<span class="mes">' + MES_ABR[ini.getMonth()] + '</span></div>' +
+                        '<div class="evento-body">' +
+                        '<span class="evento-tag tag-' + ev.tag + '">' + TAG_NOMBRES[ev.tag] + '</span>' +
+                        (enCurso ? '<span class="evento-encurso"><i class="fas fa-circle" style="font-size:0.5rem"></i> En curso</span>' : '') +
+                        '<h3>' + ev.t + '</h3>' +
+                        '<p>' + ev.d + '</p>' +
+                        '<p class="evento-meta"><i class="fas fa-map-marker-alt"></i>' + ev.l + ' &nbsp;·&nbsp; <i class="far fa-calendar-alt"></i>' + rangoTexto(ev) + '</p>' +
+                        '</div></article>';
+                }).join('');
+                return '<div class="mes-bloque"><div class="mes-titulo fade-in"><h2>' + meta.n + '</h2><span>Calendario litúrgico</span></div>' +
+                    '<p class="mes-desc fade-in">' + meta.d + '</p><div class="evento-lista">' + items + '</div></div>';
+            }).join('');
+        }
+
+        /* ================= CONTADOR XXX ANIVERSARIO ================= */
+        const aniv = pd('2027-01-18');
+        const n = dif(aniv);
+        const el = document.getElementById('aniv-dias');
+        if (n > 1) el.textContent = 'Faltan ' + n + ' días';
+        else if (n === 1) el.textContent = '¡Mañana!';
+        else if (n === 0) el.textContent = '¡Hoy celebramos!';
+        else document.getElementById('aniv-strip').style.display = 'none';
+    })();
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>
